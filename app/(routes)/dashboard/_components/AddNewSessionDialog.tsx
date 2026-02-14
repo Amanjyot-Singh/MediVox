@@ -59,7 +59,7 @@ function AddNewSessionDialog() {
   return (
     <Dialog>
       <DialogTrigger>
-        <Button className="mt-3.5">+ Start New Consultation</Button>
+        <Button className="mt-3.5 cursor-pointer">+ Start New Consultation</Button>
       </DialogTrigger>
 
       <DialogContent>
