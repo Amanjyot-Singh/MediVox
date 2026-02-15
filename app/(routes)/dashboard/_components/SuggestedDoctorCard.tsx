@@ -12,7 +12,7 @@ function SuggestedDoctorCard({ doctorAgent, SetSelectedDoctor, SelectedDoctor }:
   return (
     <div
       className={`flex flex-col items-center border rounded-2xl shadow p-7 hover:border-blue-500 cursor-pointer 
-        ${SelectedDoctor?.id === doctorAgent.id && 'border-blue-500'}`}
+        ${SelectedDoctor?.id === doctorAgent?.id && 'border-blue-500'}`}
       onClick={() => SetSelectedDoctor(doctorAgent)} // ✅ wrapped in function
     >
       <Image
