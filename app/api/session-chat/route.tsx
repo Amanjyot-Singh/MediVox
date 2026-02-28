@@ -32,10 +32,19 @@ export async function GET(req: NextRequest) {
     const sessionId = searchParams.get("sessionId");
     const user = await currentUser();
     try{
-        const result = await db.select().from(sessionChatTable).
         // @ts-ignore
-        where(eq(sessionChatTable.sessionId, sessionId));
-        return NextResponse.json(JSON.parse(JSON.stringify(result[0])));
+        if(sessionId == 'all'){
+            const result = await db.select().from(sessionChatTable).
+            // @ts-ignore   
+            where(eq(sessionChatTable.createdBy, user?.primaryEmailAddress?.emailAddress)).orderBy(sessionChatTable.id, "desc");
+            // console.log(result);
+            return NextResponse.json(JSON.parse(JSON.stringify(result)));
+        } else {
+            const result = await db.select().from(sessionChatTable).
+            // @ts-ignore
+            where(eq(sessionChatTable.sessionId, sessionId));
+            return NextResponse.json(JSON.parse(JSON.stringify(result[0])));
+        }
     } catch(err:any){
         console.error("DB Error:", err);
         return new Response(err);
