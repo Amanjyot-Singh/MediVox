@@ -1,23 +1,24 @@
 import React from 'react'
 import Image from 'next/image';
 import { UserButton } from '@clerk/nextjs';
+import Link from 'next/link';
 
 
 const menuOptions = [
     {
         id:1,
         name: 'Home',
-        path: '/home'
+        path: '/dashboard'
     },
     {
         id:2,
         name: 'History',
-        path: '/history'
+        path: '/dashboard/history'
     },
     {
         id:3,
         name: 'Pricing',
-        path: '/pricing'
+        path: '/dashboard/billing'
     },
     {
         id:4,
@@ -28,12 +29,14 @@ const menuOptions = [
 function AppHeader() {
   return (
     <div className='flex items-center justify-between p-4 shadow px-10 md:px-20 lg:px-40'>
-      <Image src={"/logo.svg"} alt="Logo" width={50} height={60} />
+      <Link href="/" className="inline-block">
+        <Image src={"/logo.svg"} alt="Logo" width={50} height={60} className="cursor-pointer" />
+      </Link>
       <div className='md:flex gap-12 items-center'>
         {menuOptions.map((option, index) => (
-            <div key={index}>
+            <Link key={index} href={option.path}>
                 <h2 className="hover:font-bold cursor-pointer transition-all">{option.name}</h2>
-            </div>
+            </Link>
         ))}
       </div>
       <UserButton />

@@ -14,6 +14,7 @@ type Props = {
     historyList: SessionDetail[]
 }
 import moment from "moment";
+import ViewReportDialog from "./ViewReportDialog";
 
 function HistoryTable({ historyList }: Props) {
   return (
@@ -36,7 +37,7 @@ function HistoryTable({ historyList }: Props) {
                     <TableCell>{moment(new Date(record.createdOn)).fromNow()}</TableCell>
                     <TableCell className="text-right">
                         {/* <a href={`/dashboard/history/${record.sessionId}`} className="text-blue-500 hover:underline">View Details</a> */}
-                        <Button variant= {'link'} size = {'sm'} className="cursor-pointer">View Details</Button>
+                        <ViewReportDialog record={record}/>
                     </TableCell>
                 </TableRow>
             ))}

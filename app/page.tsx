@@ -112,7 +112,7 @@ const Navbar = () => {
     <nav className="flex w-full items-center justify-between border-t border-b border-neutral-200 px-4 py-4 dark:border-neutral-800">
       <div className="flex items-center gap-2">
         <div className="size-7 rounded-full bg-gradient-to-br from-violet-500 to-pink-500" />
-        <h1 className="text-base font-bold md:text-2xl">MediVox AI</h1>
+        <Link href={'/dashboard'}><h1 className="text-base font-bold md:text-2xl">MediVox AI</h1></Link>
       </div>
      {!user ?
      <Link href= {'/sign-in'}>
@@ -121,7 +121,7 @@ const Navbar = () => {
       </button> </Link>: 
       <div className="flex gap-5 items-center">
         <UserButton/>
-        <Button>Dashboard</Button>
+        <Button><Link href={'/dashboard'} className="font-medium">Dashboard</Link></Button>
       </div>
       }
     </nav>
